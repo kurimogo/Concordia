@@ -10,22 +10,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <script src="home.js"></script>
+    <link rel="stylesheet" href="../index.css"><!--全体の設定-->
+    <link rel="stylesheet" href="home.css"><!--Home画面専用-->
 </head>
 <body>
     <header><!--ヘッダー(一番上側)の部分-->
-        <h1>回転計算</h1>
+        <h1>Concordia</h1>
     </header>
     <main>
-        <div>
-            <h1>回転して計算</h1>
+    <div class="main_frame">
+        <div id="title_left">
+            <h1>Concordia</h1>
             <p>~回転して~</p>
         </div>
-        <div>
-            <button>ゲーム開始(スペースキー)</button>
+        <div id="title_right">
+            <button onclick="select()">ゲーム開始(スペースキー)</button>
             <button>チュートリアル(初心者の方はこちら！)</button>
         </div>
+    </div>
+    <div class="main_frame" id="explanation">
+        <div class="explanation_block">
+            <h2>このゲームとは？</h2>
+        <p>このゲームは問題に書いてある数字に合うように式を作るゲームだよ<br>
+        と言葉で説明しても分かりづらいので初心者・初めての方はチュートリアルをやってみよう！</p>
+        </div>
+    </div>
     </main>
     <footer><!--フッター(一番下側)の部分-->
         <p>Copyright © kurimogo All Rights Reserved.</p>

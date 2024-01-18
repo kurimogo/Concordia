@@ -1,0 +1,41 @@
+#title_left {
+    width: 70%;
+    height: 200px;
+    margin: auto;
+}
+#title_right {
+    width: 30%;
+}
+#title_right button{
+    width: 100%;
+    height: 100px;
+    color: #EFEFEF;
+    background-color: #79BD9A;
+    
+}
+
+#explanation {
+    margin-top: 30px;
+    width: 70%;
+    border: 2px solid #79BD9A;
+}
+
+.explanation_block {
+    display: flex;
+}
+
+.explanation_block h2 {
+    padding-right: 2.5%;
+    width: 25%;
+    position: absolute;
+    left: 0px;
+}
+
+.explanation_block p{
+    text-align: left;
+    position: absolute;
+    right: 0px;
+    width: 70%;
+    padding-left: 2.5%;
+    border-left: 2px solid #757575;
+}
