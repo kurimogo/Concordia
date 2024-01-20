@@ -8,27 +8,34 @@ header {
     width: 100%;
     height: 70px;
 }
+
+header h1 {
+    margin: 0px;
+    height: 50px;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
 body {
     color: #757575;
 }
-main {
+body {
     background-color: #EFEFEF;
-    margin: 0px;
-    position: absolute;
-    right: 0px;
-    bottom: 50px;
-    top: 72px;
-    height: 100%;
-    width: 100%;
 }
 
-.main_frame {
+.layer {
+    width: 300px;
+    height: 300px;
     position: relative;
-    top: 100px;
-    width: 70%;
-   margin: auto;
-   text-align:center;
-   display: flex;
+    margin: auto;
+}
+
+.layer_block {
+    width: 300px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: auto;
 }
 
 footer {

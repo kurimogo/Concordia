@@ -1,18 +1,4 @@
 
-header {
-    background-color: #A8DBA8;
-    border-bottom: 2px solid #757575;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 100%;
-    height: 70px;
-}
-
-body {
-    color: #757575;
-}
-
 main {
     background-color: #EFEFEF;
     margin: 0px;
@@ -49,6 +35,8 @@ main {
     left: 0px;
     width: 50%;
 }
+
+
 
 #rotate{
     width: 300px;
@@ -120,15 +108,4 @@ main {
     height: 120px;
     padding-left: 15%;
     padding-right: 15%;
-}
-
-footer {
-    background-color: #A8DBA8;
-    border-top: 2px solid #757575;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    width: 100%;
-    height: 50px;
-    text-align:center;
 }

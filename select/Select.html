@@ -11,11 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>モード選択</title>
     <link rel="stylesheet" href="select.css">
+    <link rel="stylesheet" href="../index.css">
     <script src="select.js"></script>
 </head>
 <body>
     <header><!--ヘッダー(一番上側)の部分-->
-        <h1>回転計算</h1>
+        <h1>Concordia</h1>
     </header>
     <main>
         <div class="main_frame" id="select_top">
@@ -24,10 +25,14 @@
     <div class="main_frame">
         <div id="select_left">
            <h2>初心者コース</h2>
-           <canvas id="course" width="300" height="300"></canvas>
+           <div class="layer">
+           <canvas class="layer_block" id="course" width="300" height="300"></canvas>
+           <canvas class="layer_block" id="course_arrow" width="300" height="300"></canvas>
+
+           </div>
            <div id="rotate">
-           <button class="rotate_botton">左に回す</button>
-           <button class="rotate_botton">右に回す</button>
+           <button class="rotate_botton" id="start" onclick="test()">左に回す</button>
+           <button class="rotate_botton" onclick="test()">右に回す</button>
            </div>
         </div>
         <div id="select_right">

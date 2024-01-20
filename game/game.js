@@ -42,7 +42,7 @@
     const start_right = 0;//変数リセット(念のため)
 
   
-    //const context_course = canvas_right.getContext("2d");//2次元描画
+    //const canvas = canvas_right.getContext("2d");//2次元描画
 
 
 
@@ -52,18 +52,18 @@ window.onload = function() {
 
     if (canvas_right.getContext) {
 
-      //movie_right();
+      //move_right();
 
       board();
        //最初に背景色となる土台を作成します
-       //context_course.beginPath();//パスの作成
-       //context_course.arc(150, 150, 140, (Math.PI/5)*1, (Math.PI/5)*9, false);//黒い円
+       //canvas.beginPath();//パスの作成
+       //canvas.arc(150, 150, 140, (Math.PI/5)*1, (Math.PI/5)*9, false);//黒い円
 
        
        
 
-         //context_course.fillStyle = '#ff0000';
-         //context_course.fill();//塗りつぶす
+         //canvas.fillStyle = '#ff0000';
+         //canvas.fill();//塗りつぶす
       }
     }
 
@@ -82,8 +82,8 @@ window.onload = function() {
  
 
       //円を作るプログラム
-      context_course.beginPath();//パスの作成
-      context_course.arc(150, 150, 140, ((Math.PI/5)*course),  ((Math.PI/5)*(course + 1)), false);//扇形のパス(複雑なのは円を上に持っていくため)
+      canvas.beginPath();//パスの作成
+      canvas.arc(150, 150, 140, ((Math.PI/5)*course),  ((Math.PI/5)*(course + 1)), false);//扇形のパス(複雑なのは円を上に持っていくため)
       
       
       /* 
@@ -94,56 +94,56 @@ window.onload = function() {
       　　最初のコードは円の開始位置を決めています。
       ==========================================================================
       */
-      context_course.lineWidth = 3; // 線の太さ
-      context_course.lineTo(150,150);//線で囲む
-      context_course.closePath();//線で囲む作業を完了させる
-      context_course.stroke();//線の描画
+      canvas.lineWidth = 3; // 線の太さ
+      canvas.lineTo(150,150);//線で囲む
+      canvas.closePath();//線で囲む作業を完了させる
+      canvas.stroke();//線の描画
 
 
-     context_course.save(); //座標系セーブ
+     canvas.save(); //座標系セーブ
 
-     context_course.translate(150, 150);
-     context_course.rotate((Math.PI / 5) * course);
+     canvas.translate(150, 150);
+     canvas.rotate((Math.PI / 5) * course);
 
       //円の中の文字を作るプログラム
-      context_course.fillStyle = '#000';
-      context_course.font = '30px Arial';
-      context_course.textAlign = 'center';
-      context_course.textBaseline = 'middle';
-      context_course.fillText(right,  0, -115);
+      canvas.fillStyle = '#000';
+      canvas.font = '30px Arial';
+      canvas.textAlign = 'center';
+      canvas.textBaseline = 'middle';
+      canvas.fillText(right,  0, -115);
 
-      context_course.restore();//座標系のセーブ復活
+      canvas.restore();//座標系のセーブ復活
 
 
       //真ん中の図形を書くプログラム
  
          //丸い枠を作る
-          context_course.beginPath();//パスの作成
-          context_course.arc(150, 150, 60, (Math.PI/10)*20, (Math.PI/10)*10, false);//中の円
-          context_course.fillStyle = '#ffffff';
-          context_course.fill();//塗りつぶす
-          context_course.lineWidth = 3; // 線の太さ
-          context_course.stroke();//線の描画
+          canvas.beginPath();//パスの作成
+          canvas.arc(150, 150, 60, (Math.PI/10)*20, (Math.PI/10)*10, false);//中の円
+          canvas.fillStyle = '#ffffff';
+          canvas.fill();//塗りつぶす
+          canvas.lineWidth = 3; // 線の太さ
+          canvas.stroke();//線の描画
 
-           context_course.beginPath();//お絵かきをするよーっていう呪文
-           context_course.moveTo(90, 150);//そこにペン(なのかな？)を移動したよ
-           context_course.lineTo(150, 90);   
-           context_course.lineTo(210, 150);
+           canvas.beginPath();//お絵かきをするよーっていう呪文
+           canvas.moveTo(90, 150);//そこにペン(なのかな？)を移動したよ
+           canvas.lineTo(150, 90);   
+           canvas.lineTo(210, 150);
  
-           context_course.fillStyle = '#ffffff';
-           context_course.fill();//塗りつぶす
-           context_course.lineWidth = 3; // 線の太さ
-           context_course.stroke();//線の描画
+           canvas.fillStyle = '#ffffff';
+           canvas.fill();//塗りつぶす
+           canvas.lineWidth = 3; // 線の太さ
+           canvas.stroke();//線の描画
  
-           context_course.restore();//座標系のセーブ復活
-           context_course.save(); //座標系セーブ
+           canvas.restore();//座標系のセーブ復活
+           canvas.save(); //座標系セーブ
 
           //中に書く文字を描画する
-          context_course.fillStyle = '#000'; // テキストの色を設定
-          context_course.font = '50px Arial'; // フォントを設定
-          context_course.textAlign = "center";
-          context_course.textBaseline = "middle"; // 縦方向の揃え
-          context_course.fillText(Math.floor(9-(select_right % 10)), 150, 150);//ここで真ん中の数字を書いてる
+          canvas.fillStyle = '#000'; // テキストの色を設定
+          canvas.font = '50px Arial'; // フォントを設定
+          canvas.textAlign = "center";
+          canvas.textBaseline = "middle"; // 縦方向の揃え
+          canvas.fillText(Math.floor(9-(select_right % 10)), 150, 150);//ここで真ん中の数字を書いてる
           
 
 
@@ -153,9 +153,9 @@ window.onload = function() {
 
   //右回転をする(右側の歯車を)
 
-   function movie_right(){
+   functionmove_right(){
    now_right = now_right+1;
-   context_course.clearRect(0,0, 300 ,300)
+   canvas.clearRect(0,0, 300 ,300)
     board();//繰り返し呼び出す
     console.log();
    }
