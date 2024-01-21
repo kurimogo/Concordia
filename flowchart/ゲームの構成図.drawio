@@ -1,5 +1,5 @@
-<mxfile host="Electron" modified="2024-01-19T05:33:06.858Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="ICOawxfYZKTZTP5qtq6X" version="21.6.8" type="device" pages="2">
-  <diagram name="ゲームのフローチャート" id="8Gi05dl_mneCTVW7z9Gq">
+<mxfile host="Electron" modified="2024-01-19T05:33:06.858Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="ICOawxfYZKTZTP5QtQ6X" version="21.6.8" type="device" pages="2">
+  <diagram name="ゲームのフローチャート" id="8Gi05dl_mneCTVW7z9GQ">
     <mxGraphModel dx="1434" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -82,15 +82,15 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="nveUYRRayGqaupbIjyCz" name="ページ2">
+  <diagram id="nveUYRRayGQaupbIjyCz" name="ページ2">
     <mxGraphModel dx="1434" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="icYat-VlFbtyHHLOqfIv-2" value="関数実行" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="icYat-VlFbtyHHLOQfIv-2" value="関数実行" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="160" y="40" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="icYat-VlFbtyHHLOqfIv-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="icYat-VlFbtyHHLOQfIv-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="160" y="200" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
