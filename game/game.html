@@ -28,19 +28,23 @@
         <h1>回転計算</h1>
     </header>
     <main>
-     <div id="game">
-        <div><!--これは左から番目のやつです。このdivは自動生成です。-->
-            <canvas id="game">
-
-            </canvas>
-            <button>
-
-            </button> 
-            <button>
-                
-            </button>           
+    <div class="main_frame"> 
+        <div id="top">
+        <h2>問題</h2>
+        <p>以下の数字が当てはまる式を制限時間内に完成させなさい。</p>
+        <div>
+            <h4>現在の数</h4>
+        <h1 id="Q_display"></h1> 
         </div>
+        <div>
+            <h4>残り時間</h4>
+            <h1 id="time_display">3分5秒</h1>
+        </div>
+        </div>
+        <div id="center">
 
+            <button>回答！(スペースキー)</button>
+        </div>
     </div>
     </main>
     <footer><!--フッター(一番下側)の部分-->

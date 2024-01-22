@@ -22,7 +22,7 @@ window.onload = function () {
     dom_center_course = document.getElementById("course_arrow");
 
     board(dom_course, dom_center_course, 140, 4, '');
-    setInterval(draw, 1); 
+    setInterval(draw, 40); 
 }
 
 // ボタンの部分の関数
