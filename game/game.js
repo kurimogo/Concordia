@@ -4,6 +4,7 @@ let A = ['1','+', '1'];
 const minus = true;
 let operator = ['+', '-', '*', '/'];
 const quiz_list = {number: 0, pass: 0, fail: 0, invalid:0} 
+let minutes = 0;
 
 Q_display_JS = document.getElementById('Q_display');
 time_display_JS = document.getElementById('time_display');
@@ -11,15 +12,45 @@ pass_display_JS = document.getElementById('pass_display');
 fail_display_JS = document.getElementById('fail_display');
 invalid_display_JS = document.getElementById('invalid_display');
 
-let time = 1801;
+let input_ui_gethtml = document.getElementById("input_ui_dom");
+
+const input_ui_list= [];
+
+let time = 1800;
 
 window.onload = function(){
-    game_time();
-    Question();
-    Allinput_ui();
+    countdown();
 }
 
 
+//カウントダウン
+let count = 5;
+function countdown (){
+    input_ui_gethtml.innerHTML ='<canvas id=countdown width="400" height="400"></canvas>'
+    let count_getdom = document.getElementById('countdown');
+    let count_dom = count_getdom.getContext('2d');
+    if(count > 0){
+        count_dom.font = '200px Arial';
+        count_dom.fillStyle = '#757575'; // テキストの色を設定
+        count_dom.fillText(count, 200, 200);
+        count--;
+        //上のタイムの部分
+        if(Math.floor(time / 60) > 0){
+            minutes = Math.floor(time / 60) +'分';
+        }else{
+            minutes ='';
+        }
+        time_display_JS.innerHTML='<h2>'+ minutes + (time % 60)+ '秒' +'</h2>';
+
+        count_time = setTimeout(countdown, 1000);
+    } else {
+        clearTimeout(count_time);
+        input_ui_gethtml.innerHTML = ''
+        Allinput_ui();
+        game_time();
+        Question();
+    }
+}
 
 //タイマーの部分
 function game_time(){
@@ -58,60 +89,25 @@ function Question(){
     Q_display_JS.innerHTML='<h2>'+ Q +'</h2>';
 }
 
-//回答システム
-function answer(){
-    if(time > 0){
-    let answer_formula = ''; // 初期化
-    for (let process_answer = 0; process_answer < get_Number; process_answer++){
-        answer_formula = (answer_formula + A[process_answer]);
-    }
-   // answer_formula = eval(answer_formula);
 
-    if(answer_formula == Q){
-        quiz_list.pass++;
-        pass_display_JS.innerHTML = '<p id="pass_display">'+ quiz_list.pass +'</p>'
-        Question();
-    }else {
-        quiz_list.fail++;
-        fail_display_JS.innerHTML = '<p id="fail_display">' + quiz_list.fail +'</p>'
-    }
-    console.log(quiz_list);
-
-}else {
-    console.log('受付終了')
-}
-}
-
-function invalid(){
-    quiz_list.invalid++;
-    invalid_display_JS.innerHTML = '<p id="fail_display">' + quiz_list.invalid +'</p>'
-    Question();
-}
-
+//最初の描画システム
 function Allinput_ui () {
-    input_ui_gethtml = document.getElementById("input_ui_dom");
-    const input_ui_list= [];
         for (let input_ui_number = 0; input_ui_number < get_Number; input_ui_number++){
-            if (input_ui_number % 2 == 1) {
-                input_ui_list.push({type:'number',number: 10, start:270, now:0});
+            if (input_ui_number % 2 !== 1) {
+                input_ui_list.push({id:'', type:'number',number: 10, start:270, now:2});
             } else {
-                input_ui_list.push({type:'symbol',number: 4, start:270, now:0});
+                input_ui_list.push({type:'symbol',number: 4, start:270, now:2});
             }
-            input_ui_gethtml.innerHTML +="<canvas id=input_"+ input_ui_number +" width='300' height='300'></canvas>";
+            input_ui_gethtml.innerHTML += "<div class='input_ui_css'><canvas id=input_" + input_ui_number + " width='300' height='300'></canvas><button onclick='draw(" + input_ui_number + ",1)'>左回転</button><button onclick='draw(" + input_ui_number + ", -1)'>回転</button></div>";
 
         }
     console.log(input_ui_list);
 
     for (let input_ui_number = 0; input_ui_number < get_Number; input_ui_number++){
-        if (input_ui_number % 2 !== 1) {
             get_minidom = document.getElementById('input_' + input_ui_number);
             minidom = get_minidom.getContext("2d");
-            new_board(minidom, 'number', 300, 10, 0, 3)
-        } else {
-            get_minidom = document.getElementById('input_' + input_ui_number);
-            minidom = get_minidom.getContext("2d");
-            new_board(minidom, 'symbol', 300, 4, 0, 3)
-        }
+            input_ui_list[input_ui_number].id = minidom
+            new_board(input_ui_list[input_ui_number].id, input_ui_list[input_ui_number].type, 300, input_ui_list[input_ui_number].number, input_ui_list[input_ui_number].now);
     }
     }
 
@@ -125,15 +121,14 @@ let move_time = 2;
 testlabel = ['hello!','why?','yes', 'no!']
 
 // ボタンの部分の関数
-function draw() {
-    if ( move_now > 360) {
-        move_now = 1;
-    }else{move_now++;}
-    board(dom_course, dom_center_course, 140, 4, '');
+function draw(get_id, turn) {
+    input_ui_list[get_id].now += turn
+    new_board(input_ui_list[get_id].id, input_ui_list[get_id].type, 300, input_ui_list[get_id].number, input_ui_list[get_id].now);
 }
 
-function new_board(id, type, size, arc_number, start, now, labal){
-    id = id
+
+
+function new_board(id, type, size, arc_number, now,){
     id.clearRect(0, 0, size, size);
     Symbol =['+', '-', '/', '*']
     let number = 0;
@@ -186,7 +181,7 @@ for (number = 0;  number < arc_number; number++){
     id.fillStyle = '#EFEFEF';
     id.fill();//塗りつぶす
     id.lineWidth = 3; // 線の太さ
-    id.strokeStyle = '#757575'; // テキストの色を設定
+    id.strokeStyle = '#757575'; // 線の色
     id.stroke();//線の描画
     //中に書く文字を描画する
     id.restore();//座標系のセーブ復活
@@ -203,3 +198,33 @@ for (number = 0;  number < arc_number; number++){
     }
 }
 
+
+//回答システム
+function answer(){
+    if(time > 0){
+    let answer_formula = ''; // 初期化
+    for (let process_answer = 0; process_answer < get_Number; process_answer++){
+        answer_formula = (answer_formula + A[process_answer]);
+    }
+   // answer_formula = eval(answer_formula);
+
+    if(answer_formula == Q){
+        quiz_list.pass++;
+        pass_display_JS.innerHTML = '<p id="pass_display">'+ quiz_list.pass +'</p>'
+        Question();
+    }else {
+        quiz_list.fail++;
+        fail_display_JS.innerHTML = '<p id="fail_display">' + quiz_list.fail +'</p>'
+    }
+    console.log(quiz_list);
+
+}else {
+    console.log('受付終了')
+}
+}
+
+function invalid(){
+    quiz_list.invalid++;
+    invalid_display_JS.innerHTML = '<p id="fail_display">' + quiz_list.invalid +'</p>'
+    Question();
+}

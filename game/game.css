@@ -34,6 +34,7 @@
 
 }
 
+
 .mini_list {
     display: flex;
     height: 30%;
@@ -54,6 +55,8 @@
     font-size: 20px;
 }
 
+
+
 .center_frame h1 {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -62,4 +65,21 @@
 .center_frame h4 {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.input_ui_css {
+    width: 300px;
+    height: 400px;
+    margin: auto;
+}
+.input_ui_css button{
+    width: 50%;
+    height: 100px;
+}
+
+#countdown {
+    margin: auto;
+}
+#input_ui_dom {
+    display: flex;
 }
