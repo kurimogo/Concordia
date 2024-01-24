@@ -1,23 +1,4 @@
 
-main {
-    background-color: #EFEFEF;
-    margin: 0px;
-    position: absolute;
-    right: 0px;
-    bottom: 50px;
-    top: 72px;
-    height: 100%;
-    width: 100%;
-}
-
-.main_frame {
-    position: relative;
-    top: 40px;
-    width: 70%;
-   margin: auto;
-   text-align:center;
-   display: flex;
-}
 
 #select_top {
     top: 20px;

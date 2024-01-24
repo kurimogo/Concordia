@@ -7,6 +7,9 @@ const describe = {
 
 };
 
+export function test(){
+    console.log("hello");
+}
 
 let dom_course;
 let canvas;
@@ -38,59 +41,59 @@ function board(canvas, canvas_center, size, angle, labal){
         arc_number = 360/arc_angle;
         let now_number = Math.ceil(((move_now -(arc_angle/2)) /arc_angle));
 
-        draw_canvas = canvas.getContext("2d");
-        draw_canvas.clearRect(0, 0, canvas.width, canvas.height);
+        id = canvas.getContext("2d");
+        id.clearRect(0, 0, canvas.width, canvas.height);
     for (let number = 0;  number < arc_number; number++){
         //大きな円を書く
-        draw_canvas.beginPath();
-        draw_canvas.arc(canvas.width/2,canvas.height/2, size, ((Math.PI/180)*arc_angle)*number+(Math.PI/4) + (Math.PI/180*move_now),  ((Math.PI/180)*arc_angle)*(number + 1)+(Math.PI/4) + (Math.PI/180*move_now), false);//扇形のパス(複雑なのは円を上に持っていくため)
-        draw_canvas.lineWidth = 3; // 線の太さ
-        draw_canvas.strokeStyle = '#757575'
-        draw_canvas.lineTo(canvas.width/2,canvas.height/2);//線で囲む
-        draw_canvas.stroke();//線の描画
+        id.beginPath();
+        id.arc(canvas.width/2,canvas.height/2, size, ((Math.PI/180)*arc_angle)*number+(Math.PI/4) + (Math.PI/180*move_now),  ((Math.PI/180)*arc_angle)*(number + 1)+(Math.PI/4) + (Math.PI/180*move_now), false);//扇形のパス(複雑なのは円を上に持っていくため)
+        id.lineWidth = 3; // 線の太さ
+        id.strokeStyle = '#757575'
+        id.lineTo(canvas.width/2,canvas.height/2);//線で囲む
+        id.stroke();//線の描画
         //中の文字を書く予定
-        draw_canvas.save(); //座標系セーブ
-        draw_canvas.translate((canvas.width/2),canvas.height/2);
-        draw_canvas.rotate(((Math.PI/180)*arc_angle )*number + ((Math.PI/180)*move_now));
-        draw_canvas.fillStyle = '#757575';//文字の設定(色)
-        draw_canvas.font = '15px Arial';//文字の設定(大きさとフォント)
-        draw_canvas.textAlign = 'center';//文字の設定(中央揃え)
+        id.save(); //座標系セーブ
+        id.translate((canvas.width/2),canvas.height/2);
+        id.rotate(((Math.PI/180)*arc_angle )*number + ((Math.PI/180)*move_now));
+        id.fillStyle = '#757575';//文字の設定(色)
+        id.font = '15px Arial';//文字の設定(大きさとフォント)
+        id.textAlign = 'center';//文字の設定(中央揃え)
         if (labal == ''){
-            draw_canvas.fillText(number,  0, -100);//外枠の文字を書く
+            id.fillText(number,  0, -100);//外枠の文字を書く
         }else {
-        draw_canvas.fillText(labal[number],  0, -100);//外枠の文字を書く
+        id.fillText(labal[number],  0, -100);//外枠の文字を書く
         }
-        draw_canvas.restore();//座標系のセーブ復活
-        draw_canvas.save(); //座標系セーブ
+        id.restore();//座標系のセーブ復活
+        id.save(); //座標系セーブ
         //console.log(number);
     }
 
-    circle(canvas_center,size, labal, now_number);
+    circle(canvas_center, size, labal, now_number);
 }
 
 
 function circle(canvas_center, size, labal, center_number){
-    draw_canvas= canvas_center.getContext("2d");
+    id= canvas_center.getContext("2d");
 
     //真ん中の指すやつ
     center_origin = -(150-(size*0.6));
-    draw_canvas.save(); //座標系セーブ
-    draw_canvas.translate((canvas_center.width/2)*0.6,(canvas_center.width/2)*0.6);
-    draw_canvas.scale(0.4, 0.4);
-    draw_canvas.beginPath();//パスの作成
-    draw_canvas.arc(canvas_center.width/2, canvas_center.height/2,  size, (Math.PI/10)*20, (Math.PI/10)*10, false);
-    draw_canvas.moveTo((canvas_center.width/2)+size, canvas_center.width/2);//そこにペン(なのかな？)を移動したよ
-    draw_canvas.lineTo(canvas_center.width/2, canvas_center.width/2-size); //線を書く
-    draw_canvas.lineTo((canvas_center.width/2)-size, canvas_center.width/2);//線を書く
-    draw_canvas.fillStyle = '#EFEFEF';
-    draw_canvas.fill();//塗りつぶす
-    draw_canvas.lineWidth = 3; // 線の太さ
-    draw_canvas.strokeStyle = '#757575'; // テキストの色を設定
-    draw_canvas.stroke();//線の描画
+    id.save(); //座標系セーブ
+    id.translate((canvas_center.width/2)*0.6,(canvas_center.width/2)*0.6);
+    id.scale(0.4, 0.4);
+    id.beginPath();//パスの作成
+    id.arc(canvas_center.width/2, canvas_center.height/2,  size, (Math.PI/10)*20, (Math.PI/10)*10, false);
+    id.moveTo((canvas_center.width/2)+size, canvas_center.width/2);//そこにペン(なのかな？)を移動したよ
+    id.lineTo(canvas_center.width/2, canvas_center.width/2-size); //線を書く
+    id.lineTo((canvas_center.width/2)-size, canvas_center.width/2);//線を書く
+    id.fillStyle = '#EFEFEF';
+    id.fill();//塗りつぶす
+    id.lineWidth = 3; // 線の太さ
+    id.strokeStyle = '#757575'; // テキストの色を設定
+    id.stroke();//線の描画
     //中に書く文字を描画する
-    draw_canvas.restore();//座標系のセーブ復活
-    draw_canvas.save(); //座標系セーブ
-    draw_canvas.fillStyle = '#757575'; // テキストの色を設定
-    draw_canvas.textAlign = "center";//横方向
-    draw_canvas.fillText(center_number, canvas_center.width/2, canvas_center.height/2);//ここで真ん中の数字を書いてる
+    id.restore();//座標系のセーブ復活
+    id.save(); //座標系セーブ
+    id.fillStyle = '#757575'; // テキストの色を設定
+    id.textAlign = "center";//横方向
+    id.fillText(center_number, canvas_center.width/2, canvas_center.height/2);//ここで真ん中の数字を書いてる
 }

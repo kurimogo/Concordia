@@ -4,15 +4,17 @@
 }
 
 #title_left h1 p {
-    text-align: center;
+    vertical-align: middle;
     display: flex;
 }
 
-#title_left h1 {
+#title_left h1,p {
     width: 100%;
-    height: auto;
+    height: 50%;
+    margin: 0px;
     font-size: 100%;
 }
+
 
 #title_right {
     width: 30%;

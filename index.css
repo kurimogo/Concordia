@@ -17,12 +17,9 @@ header h1 {
 }
 
 body {
+    background-color: #EFEFEF;
     color: #757575;
 }
-body {
-    background-color: #EFEFEF;
-}
-
 .layer {
     width: 300px;
     height: 300px;
@@ -36,6 +33,11 @@ body {
     top: 0px;
     left: 0px;
     margin: auto;
+}
+
+main {
+    width: 80%;
+   margin: auto;
 }
 
 footer {

@@ -22,6 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="game.css">
 </head>
 <body>
     <header><!--ヘッダー(一番上側)の部分-->
@@ -31,96 +32,47 @@
     <div class="main_frame"> 
         <div id="top">
         <h2>問題</h2>
-        <p>以下の数字が当てはまる式を制限時間内に完成させなさい。</p>
-        <div>
+        <p>以下の数字が当てはまる式を制限時間内に完成させなさい。<br>※カッコ()はありません。がんばってください。</p>
+
+        <div class="center_frame">
+        <div id="top_left">
             <h4>現在の数</h4>
-        <h1 id="Q_display"></h1> 
+        <h2 id="Q_display"></h2> 
         </div>
-        <div>
+        <div id="top_right">
             <h4>残り時間</h4>
-            <h1 id="time_display">3分5秒</h1>
+            <h2 id="time_display">0</h2>
         </div>
+            <!--数字の部分-->
+            <div id ='mini_Alllist'>
+                <div class="mini_list">
+                        <p>正解した数</p>
+                        <p id="pass_display">0</p>
+                </div>
+                <div class="mini_list" id="mini_list_boos">
+                        <p>不正解の数</p>
+                        <p id="fail_display">0</p>
+                </div>
+                <div class="mini_list">
+                        <p>飛ばした数</p>
+                        <p id="invalid_display">0</p>
+             </div>
+            </div>
+        </div>
+       </div>
         </div>
         <div id="center">
+            <div id="input_ui_dom">
 
-            <button>回答！(スペースキー)</button>
+            </div>
+            <button onclick="answer()">回答！(エンターキー)</button>
+            <button onclick="invalid()">飛ばす(スペースキー)</button>
         </div>
     </div>
     </main>
     <footer><!--フッター(一番下側)の部分-->
         <p>Copyright © kurimogo All Rights Reserved.</p>
     </footer>
-    <script src="game.js"></script>
 </body>
+<script src="game.js"></script>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--1000行目だね。なにかあると思った？残念でしたー！そこまで作者が作るやる気がありませんー。これを書いてるのが作者なんじゃないのかって？そうだよ。僕が暇すぎて書いたんだ-->
