@@ -15,7 +15,7 @@ let center_dom = document.getElementById('center');
 let input_ui_gethtml
 const input_ui_list= [];
 
-let time = 120;
+let time = 1800;
 
 window.onload = function(){
     countdown();
@@ -23,7 +23,7 @@ window.onload = function(){
 }
 //特定のキーが押されたときの反応
 let keysPressed = {};
-const now_down = {Left:'',down_1:'',2:'',3:'',4:'',5:'',6:'',7:''}
+const now_down = {Left:'',down_1:'',down_2:'',down_3:'',down_4:'',5:'',6:'',7:''}
 
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
@@ -36,23 +36,75 @@ document.addEventListener('keydown', (event) => {
         case 'ArrowLeft':
         now_down.Left = true; 
         break;
+
+        case '1': now_down.down_1 = true; break;
+
+        case '2': now_down.down_2 = true; break;
+
+        case '3': now_down.down_3 = true; break;
+
+        case '4': now_down.down_4 = true; break;
+
+        case '5': now_down.down_5 = true; break;
+
         case '1':
         now_down.down_1 = true;
         break;
+
+        case '1':
+        now_down.down_1 = true;
+        break;
+
+        case '1':
+        now_down.down_1 = true;
+        break;
+
+        case '1':
+        now_down.down_1 = true;
+        break;
+
+        case '1':
+        now_down.down_1 = true;
+        break;
+
+        case '1':
+        now_down.down_1 = true;
+        break;
+
+        case '1':
+        now_down.down_1 = true;
+        break;
+
     }
-    if(now_down.Left == true && now_down.down_1 == true){
-        console.log('同時に押されてるぞ！')
+    if(now_down.Left == true && now_down.down_1 == true && get_Number > 0){
+        console.log('1同時に押されてるぞ！')
+        draw(0,1)
     }
-            });
+    if(now_down.Left == true && now_down.down_2 == true && get_Number > 1){
+        console.log('2同時に押されてるぞ！')
+        draw(1,1)
+    }
+    if(now_down.Left == true && now_down.down_3 == true && get_Number > 2){
+        console.log('3同時に押されてるぞ！')
+        draw(2,1)
+    }
+});
 
 document.addEventListener('keyup', (event) => {
     switch (event.key) {
         case 'ArrowLeft':
         now_down.Left = false; 
         break;
-        case '1':
-        now_down.down_1 = false;
-        break;
+        
+        case '1': now_down.down_1 = false; break;
+
+        case '2': now_down.down_2 = false; break;
+
+        case '3': now_down.down_3 = false; break;
+
+        case '4': now_down.down_4 = false; break;
+
+        case '5': now_down.down_5 = false; break;
     }
 
 });
