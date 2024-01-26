@@ -13,6 +13,7 @@
     width: 30%;
     text-align: center;
 }
+    
 
 .center_frame {
     position: relative;
@@ -34,12 +35,19 @@
 
 }
 
+#countdown {
+    margin: auto;
+    text-align: center;
+}
+
+#top {
+    padding-bottom: 20px;
+}
 
 .mini_list {
     display: flex;
     height: 30%;
     padding-top: 2%;
-
 }
 
 #mini_list_boos{
@@ -55,7 +63,19 @@
     font-size: 20px;
 }
 
+#center {
+ padding-top: 20px;
+ border-top: solid 2px  #757575;
+}
 
+#count_p {
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    font-size: 300px;
+    text-align: center;
+    line-height: 300px;
+}
 
 .center_frame h1 {
     margin-top: 5px;
@@ -72,14 +92,14 @@
     height: 400px;
     margin: auto;
 }
+
 .input_ui_css button{
     width: 50%;
     height: 100px;
 }
 
-#countdown {
-    margin: auto;
-}
+
 #input_ui_dom {
     display: flex;
 }
+
