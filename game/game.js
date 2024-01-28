@@ -5,6 +5,7 @@ const minus = true;
 let operator = ['+', '-', '*', '/'];
 const quiz_list = {number: 0, pass: 0, fail: 0, invalid:0} 
 let minutes = 0;
+let AnswerPass = false;
 
 Q_display_JS = document.getElementById('Q_display');
 time_display_JS = document.getElementById('time_display');
@@ -15,7 +16,7 @@ let center_dom = document.getElementById('center');
 let input_ui_gethtml
 const input_ui_list= [];
 
-let time = 1800;
+let time = 120;
 
 window.onload = function(){
     countdown();
@@ -23,7 +24,7 @@ window.onload = function(){
 }
 //特定のキーが押されたときの反応
 let keysPressed = {};
-const now_down = {Left:'',down_1:'',down_2:'',down_3:'',down_4:'',5:'',6:'',7:''}
+const now_down = {Left:'', right:'', down_1:'',down_2:'',down_3:'',down_4:'',5:'',6:'',7:''}
 
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
@@ -33,9 +34,10 @@ document.addEventListener('keydown', (event) => {
         case ' ':
             invalid();
             break;
-        case 'ArrowLeft':
-        now_down.Left = true; 
-        break;
+
+        case 'ArrowLeft': now_down.Left = true; break;
+
+        case 'ArrowRight': now_down.right = true; break;
 
         case '1': now_down.down_1 = true; break;
 
@@ -47,54 +49,39 @@ document.addEventListener('keydown', (event) => {
 
         case '5': now_down.down_5 = true; break;
 
-        case '1':
-        now_down.down_1 = true;
-        break;
-
-        case '1':
-        now_down.down_1 = true;
-        break;
-
-        case '1':
-        now_down.down_1 = true;
-        break;
-
-        case '1':
-        now_down.down_1 = true;
-        break;
-
-        case '1':
-        now_down.down_1 = true;
-        break;
-
-        case '1':
-        now_down.down_1 = true;
-        break;
-
-        case '1':
-        now_down.down_1 = true;
-        break;
-
     }
     if(now_down.Left == true && now_down.down_1 == true && get_Number > 0){
-        console.log('1同時に押されてるぞ！')
+        console.log('1同時に押されてるぞ!')
         draw(0,1)
     }
     if(now_down.Left == true && now_down.down_2 == true && get_Number > 1){
-        console.log('2同時に押されてるぞ！')
+        console.log('2同時に押されてるぞ!')
         draw(1,1)
     }
     if(now_down.Left == true && now_down.down_3 == true && get_Number > 2){
-        console.log('3同時に押されてるぞ！')
+        console.log('3同時に押されてるぞ!')
         draw(2,1)
+    }
+
+    if(now_down. right== true && now_down.down_1 == true && get_Number > 0){
+        console.log('1同時に押されてるぞ!')
+        draw(0,-1)
+    }
+    if(now_down.right == true && now_down.down_2 == true && get_Number > 1){
+        console.log('2同時に押されてるぞ!')
+        draw(1,-1)
+    }
+    if(now_down.right == true && now_down.down_3 == true && get_Number > 2){
+        console.log('3同時に押されてるぞ!')
+        draw(2,-1)
     }
 });
 
 document.addEventListener('keyup', (event) => {
     switch (event.key) {
-        case 'ArrowLeft':
-        now_down.Left = false; 
-        break;
+        case 'ArrowLeft': now_down.Left = false; break;
+
+        case 'ArrowRight': now_down.right = false; break;
         
         case '1': now_down.down_1 = false; break;
 
@@ -127,6 +114,7 @@ function countdown (){
         clearTimeout(count_time);
         center_dom.innerHTML = '<div id="input_ui_dom"></div> <div id="answer_button_ui"><button onclick="invalid()" class="answer_button">飛ばす(スペースキー)</button><button onclick="answer()" class="answer_button">回答！(エンターキー)</button></div>'
         input_ui_gethtml = document.getElementById("input_ui_dom");
+        AnswerPass = true;
         Allinput_ui();
         game_time();
         Question();
@@ -145,6 +133,7 @@ function game_time(){
     let clock = setTimeout(game_time, 1000);
     if (time <= 0 ){
         clearTimeout(clock);
+        AnswerPass = false;
         fin();
     }
 }
@@ -153,7 +142,9 @@ function game_time(){
 
 //問題
 function Question(){
-    Q = '';
+    let old_Q = Q
+    Q = 0;
+    if(AnswerPass == true){
     if (get_Number % 2 == 1) {
         for (let now_number = 0; now_number < get_Number; now_number++){
             if (now_number % 2 == 1){
@@ -167,11 +158,12 @@ function Question(){
         Question();
     }
     Q = eval(Q);
-    if (!Number.isInteger(Q) || (Q.toString().includes('-')&& minus)) {
+    if (!Number.isInteger(Q) || old_Q == Q ||(Q.toString().includes('-')&& minus)) {
         Q = 0;
         Question();    
     }
     Q_display_JS.innerHTML='<h2>'+ Q +'</h2>';
+}
 }
 
 
@@ -183,10 +175,9 @@ function Allinput_ui () {
             } else {
                 input_ui_list.push({type:'symbol',number: 4, start:270, now:0});
             }
-            input_ui_gethtml.innerHTML += "<div class='input_ui_css'><canvas id=input_" + input_ui_number + " width='250' height='250'></canvas><button onclick='draw(" + input_ui_number + ",1)'>左回転</button><button onclick='draw(" + input_ui_number + ", -1)'>右回転</button></div>";
+            input_ui_gethtml.innerHTML += "<div class='input_ui_css'><canvas id=input_" + input_ui_number + " width='250' height='250'></canvas><button onclick='draw(" + input_ui_number + ",1)'>左に回す<br>(" + (input_ui_number + 1) + "と左キー)</button><button onclick='draw(" + input_ui_number + ", -1)'>右に回す<br>(" + (input_ui_number + 1) + "と右キー)</button></div>";
 
         }
-    console.log(input_ui_list);
 
     for (let input_ui_number = 0; input_ui_number < get_Number; input_ui_number++){
             input_ui_list[input_ui_number].id = input_ui_number;
@@ -259,10 +250,7 @@ for (let now_dom_number = 0;  now_dom_number < arc_number; now_dom_number++){
     if(now_dom_number == 0){
 
     }
-
-    //dom_id.arc(size/2,size/2, size/2.1, ((Math.PI/180)*arc_angle)*(now_dom_number + now) + ((Math.PI/180)*arc_angle_half),  ((Math.PI/180)*arc_angle)*((now_dom_number  + now)+ 1) + ((Math.PI/180)*arc_angle_half), false);//扇形の描画
-    //dom_id.
-
+    
     //中の文字を書く予定
     dom_id.save(); //座標系セーブ
     dom_id.translate((size/2), size/2);
@@ -321,6 +309,7 @@ function answer(){
     }
     console.log(answer_formula);
     answer_formula = answer_formula.replace('×', '*')
+    answer_formula = answer_formula.replace('÷', '/')
     
    answer_formula = eval(answer_formula);
 
@@ -344,9 +333,8 @@ function invalid(){
     Question();
 }
 
-
 function fin () {
-    center_dom.innerHTML = '<div><h1>結果発表ー！！</h1><h2>正解した数 ' + quiz_list.pass + '</h2></div>'
+    center_dom.innerHTML = '<div><h1>結果発表ー！！</h1><div id="A_list"><h2>正解した数 ' + quiz_list.pass + '</h2><h2>不正解の数 ' + quiz_list.fail + '</h2><h2>飛ばした数 ' + quiz_list.invalid + '</h2></div></div>'
     time_display_JS.innerHTML = '<h2>終了</h2>'
     Q_display_JS.innerHTML = '<h2>終了</h2>'
 }

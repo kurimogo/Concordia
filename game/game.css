@@ -1,3 +1,8 @@
+#top {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
 #top_left {
     position: absolute;
     top: 0px;
@@ -40,9 +45,6 @@
     text-align: center;
 }
 
-#top {
-    padding-bottom: 20px;
-}
 
 .mini_list {
     display: flex;
@@ -115,3 +117,6 @@
     height: 350px;
 }
 
+#A_list {
+    display: flex;
+}
