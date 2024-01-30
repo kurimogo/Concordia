@@ -28,9 +28,10 @@ let time = 1200;
 window.onload = function(){
     countdown();
 }
+
 //特定のキーが押されたときの反応
 let keysPressed = {};
-const now_down = {Left:'', right:'', down_1:'',down_2:'',down_3:'',down_4:'',5:'',6:'',7:''}
+const now_down = {Left:'', right:'', down_1:'',down_2:'',down_3:'',down_4:'',down_5:'',down_6:'',down_7:''}
 
 // キーボードのキーが押されたときのイベントリスナー
 document.addEventListener('keydown', (event) => {
@@ -42,10 +43,10 @@ document.addEventListener('keydown', (event) => {
     if (key === 'Enter') answer();
     if (key === ' ') invalid();
     if (isLeft || isRight) now_down[key] = true;
-    if (key >= '1' && key <= '5') now_down[`down_${key}`] = true;
+    if (key >= '1' && key <= '7') now_down[`down_${key}`] = true;
 
     // 左または右のキーと数字のキーが同時に押されたときに描画
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 7; i++) {
         if ((isLeft && now_down[`down_${i}`] && get_Number > i - 1) ||
             (isRight && now_down[`down_${i}`] && get_Number > i - 1)) {
             draw(i - 1, isLeft ? 1 : -1);
@@ -61,7 +62,7 @@ document.addEventListener('keyup', (event) => {
 
     // 特定のキーが離されたときのアクションを設定
     if (isLeft || isRight) now_down[key] = false;
-    if (key >= '1' && key <= '5') now_down[`down_${key}`] = false;
+    if (key >= '1' && key <= '7') now_down[`down_${key}`] = false;
 });
 
 document.addEventListener('keyup', (event) => {
@@ -79,6 +80,10 @@ document.addEventListener('keyup', (event) => {
         case '4': now_down.down_4 = false; break;
 
         case '5': now_down.down_5 = false; break;
+
+        case '6': now_down.down_6 = false; break;
+
+        case '7': now_down.down_7 = false; break;
     }
 
 });

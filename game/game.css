@@ -68,6 +68,30 @@
     line-height: 50px;
 }
 
+#input_ui_dom {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.input_ui_css {
+    width: 200px;
+    height: 270px;
+}
+
+.input_ui_css button{
+    width: 50%;
+    height: 50px;
+}
+
+#answer_button_ui {
+    width: 100%;
+}
+
+#answer_button_ui button{
+    width: 50%;
+    height: 50px;
+}
+
 /* スマホ用設定 */
 @media screen and (max-width: 768px) {
     #top_right {
@@ -109,13 +133,48 @@
         line-height: 50px;
     }
 
+    #input_ui_dom {
+        position: relative;
+        top: 290px;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .input_ui_css {
+        width: 250px;
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    .input_ui_css button{
+        position: relative;
+        bottom: 100px;
+        width: 50px;
+        height: 100%;
+        margin: 0px;
+    }
+    #answer_button_ui {
+        position: relative;
+        top: 290px;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #answer_button_ui button{
+        width: 50%;
+        height: 50px;
+    }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 450px) {
    
     #left_block {
-        font-size: 13px;
+        font-size: 12px;
     }
 
+    #right_block h2{
+        font-size: 30px;
+    }
+    
 
 }

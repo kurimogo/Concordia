@@ -1,3 +1,9 @@
+
+
+
+
+
+//大会前夜まで頑張ったが間に合わずお蔵入りの子たち(オンライン機能搭載時に復活する予定)
 /*<<設定の関数>>
 ------------------------
 * 1行目...初心者モードの設定
@@ -6,7 +12,8 @@
 * 4行目...カスタム設定
 ------------------------
 */
-left_explanation = [
+
+/*left_explanation = [
     {type: 'easy_menu', title: '初心者モード', explanation: '初めての方はこちら！下のメニューではどんな問題を出すか設定できるよ！'}, 
     {type: 'normal_menu', title: '中級者モード', explanation: '中級者の方はこちら！下の設定では初心者モードで設定できる事以外に<br>マイナスを出す設定も追加されたよ！'},
     {type: 'normal_menu', title: '上級者モード', explanation: '上級者の方はこちら！下の設定の説明は問題ないよね？<br>そんな上級者の方に豆知識!円盤の数がたくさんあると<br>乱数調整でどんどん難しくなるよ！'},
@@ -14,7 +21,7 @@ left_explanation = [
 ]
 
 let left_now_number = 0;//何回回ったか記録する関数
-let get_Number = 7;
+let get_Number = 5;
 let operator = ['+', '-', '*', '/'];
 const minus = true;
 
@@ -102,3 +109,4 @@ function goGame(){
     }
     window.location.href = "../game/game.html" + "?title=" + left_explanation[left_now_number].title + "&Number=" + get_Number + "&operator="+ send + "&minus=" +  minus;
 }
+*/
