@@ -10,6 +10,9 @@
 <body>
     <header><!--ヘッダー(一番上側)の部分-->
         <h1>Concordia</h1>
+        <div id="header_right">
+            <p onclick="Furigana()">ふりがなをつける</p>
+        </div>
     </header>
     <main>
         <div id="top">
@@ -18,7 +21,7 @@
         <div id="center">
             <div id="right">
                 <h2>モード選択</h2>
-                <canvas id="right_canvas" width="500" height="500"></canvas>
+                <canvas id="right_canvas"></canvas>
                 <div id="right_button">
                     <button onclick="rotate(1)">左回転</button>
                     <button onclick="rotate(-1)">右回転</button>
@@ -29,8 +32,8 @@
             </div>
         </div>
         <div id="bottom">
-            <button>ゲームスタート</button>
-            <button>ホーム画面に戻る</button>
+            <button onclick="home()">ホーム<ruby>画面<rt>がめん</rt></ruby>に戻る</button>
+            <button onclick="goGame()">ゲームスタート</button>
         </div>
     </main>
     <footer><!--フッター(一番下側)の部分-->
@@ -38,73 +41,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

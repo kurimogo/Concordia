@@ -1,64 +1,44 @@
-#title_left {
-    width: 70%;
-    height: 200px;
-}
-
-#title_left h1 p {
-    vertical-align: middle;
+#center {
+    width: 80%;
     display: flex;
 }
 
-#title_left h1,p {
-    width: 100%;
-    height: 50%;
-    margin: 0px;
-    font-size: 100%;
+#title_left {
+    width: 70%;
+    text-align: center;
 }
-
 
 #title_right {
     width: 30%;
 }
-#title_right button{
+
+#title_right  button{
     width: 100%;
-    height:50%;
-    color: #EFEFEF;
-    font-size: 120%;
-    background-color: #79BD9A;
+    height: 50%;
+}
+
+/*タブレット用設定*/
+@media screen and (max-width: 959px) {
+}
+/* スマホ用設定 */
+@media screen and (max-width: 480px) {
+    #center {
+        width: 100%;
+        display: block;
+    }
+
+    #title_left {
+        width: 100%;
+    }
     
-}
+    #title_right {
+        width: 100%;
+    }
 
-.main_frame {
-    position: relative;
-    top: 100px;
-    width: 70%;
-   margin: auto;
-   text-align:center;
-   display: flex;
-}
+    #title_right  button{
+        width: 100%;
+        height: 50px;
+    }
+    
 
-#explanation {
-    margin-top: 30px;
-    width: 70%;
-    border: 2px solid #79BD9A;
-}
-
-.explanation_block {
-    display: flex;
-}
-
-.explanation_block h2 {
-    padding-right: 2.5%;
-    width: 25%;
-    position: absolute;
-    left: 0px;
-}
-
-.explanation_block p{
-    text-align: left;
-    position: absolute;
-    right: 0px;
-    width: 70%;
-    padding-left: 2.5%;
-    border-left: 2px solid #757575;
 }

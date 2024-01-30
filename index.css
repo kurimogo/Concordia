@@ -1,52 +1,145 @@
-
+/* ヘッダーのスタイル設定 */
 header {
     background-color: #A8DBA8;
     border-bottom: 2px solid #757575;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     width: 100%;
     height: 70px;
 }
 
+/* ヘッダー内のh1要素のスタイル設定 */
 header h1 {
-    margin: 0px;
-    height: 50px;
-    padding-left: 30px;
-    padding-top: 10px;
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 70%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* ヘッダー右側のスタイル設定 */
+#header_right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+}
+
+/* ヘッダー右側のp要素のスタイル設定 */
+#header_right p {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid #757575;
+    cursor : pointer;
+}
+
+/* ヘッダー右側のp要素のホバー時のスタイル設定 */
+#header_right p:hover {
+    background-color: red;
+}
+
+/* ボディのスタイル設定 */
 body {
     background-color: #EFEFEF;
     color: #757575;
 }
-.layer {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    margin: auto;
-}
 
-.layer_block {
-    width: 300px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    margin: auto;
-}
-
+/* メインのスタイル設定 */
 main {
-    width: 80%;
-   margin: auto;
+    position: absolute;
+    top: 72px; /* ヘッダーの高さより上の値に設定 */
+    bottom: 52px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 122px); /* ヘッダーの高さを引く */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+canvas {
+    width: 200px;
+    height: 200px;
+}
+.ja_box_parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* 必要に応じて調整 */
+}
+
+
+.ja_box {
+    position: relative; /* pタグの絶対位置を.ja_box内で制御するため */
+}
+
+.ja_box p {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ja_box p:nth-child(1) {
+    z-index: 1;
+}
+
+.ja_box p:nth-child(2) {
+    z-index: 2;
 }
 
 footer {
     background-color: #A8DBA8;
     border-top: 2px solid #757575;
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    bottom: 0;
+    right: 0;
     width: 100%;
     height: 50px;
     text-align:center;
+}
+
+/* タブレット用のスタイル設定 */
+@media screen and (max-width: 959px) {
+    /* ここにタブレット用のスタイルを追加 */
+}
+
+/* スマホ用のスタイル設定 */
+@media screen and (max-width: 480px) {
+    /* ヘッダー内のh1要素のスタイル設定 */
+    header h1 {
+        left: 10px;
+        width: 60%;
+        font-size: 30px;
+    }
+
+    /* ヘッダー右側のスタイル設定 */
+    #header_right {
+        width: 40%;
+        font-size: 15px;
+    }
+
+    canvas {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* フッター内のp要素のスタイル設定 */
+    footer p{
+        font-size: 12px;
+    }
 }

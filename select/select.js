@@ -1,4 +1,11 @@
-//設定の関数
+/*<<設定の関数>>
+------------------------
+* 1行目...初心者モードの設定
+* 2行目...中級者モードの設定
+* 3行目...上級者モードの設定
+* 4行目...カスタム設定
+------------------------
+*/
 left_explanation = [
     {type: 'easy_menu', title: '初心者モード', explanation: '初めての方はこちら！下のメニューではどんな問題を出すか設定できるよ！'}, 
     {type: 'normal_menu', title: '中級者モード', explanation: '中級者の方はこちら！下の設定では初心者モードで設定できる事以外に<br>マイナスを出す設定も追加されたよ！'},
@@ -7,6 +14,9 @@ left_explanation = [
 ]
 
 let left_now_number = 0;//何回回ったか記録する関数
+let get_Number = 7;
+let operator = ['+', '-', '*', '/'];
+const minus = true;
 
 //ロードしたときに最初の設定を読み込む
 window.onload = function(){
@@ -78,4 +88,17 @@ for (let now_dom_number = 0;  now_dom_number < arc_number; now_dom_number++){
     dom_id.textAlign = "center";//横方向
     dom_id.font = '25px Arial';//文字の設定(大きさとフォント)
     dom_id.fillText(left_explanation[now].title,  size/2, size/1.9);//中の文字を書く
+}
+
+//ホーム画面に戻る関数(aタグのほうが楽)
+function home(){
+    window.location.href='../home/home.html';
+}
+
+function goGame(){
+    let send = ''
+    for(let go_operator = 0; go_operator < operator.length; go_operator++){
+       send += "&operator=" + operator[go_operator];
+    }
+    window.location.href = "../game/game.html" + "?title=" + left_explanation[left_now_number].title + "&Number=" + get_Number + "&operator="+ send + "&minus=" +  minus;
 }
