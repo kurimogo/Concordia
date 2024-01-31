@@ -192,7 +192,7 @@ function Allinput_ui () {
             input_ui_list.push({id: input_ui_number, type:'symbol', number: 4, start:270, now:0});
         }
         if(size !== 200){
-            input_ui_gethtml.innerHTML += `<div class='input_ui_css'><button onclick='draw(${input_ui_number},1)'>左に回す<br>(${input_ui_number + 1}と左キー)</button><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number}, -1)'>右に回す<br>(${input_ui_number + 1}と右キー)</button></div>`;
+            input_ui_gethtml.innerHTML += `<div class='input_ui_css'><button onclick='draw(${input_ui_number},1)'>左に回す<br>(${input_ui_number + 1}と左キー)</button><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number}, 1)'>右に回す<br>(${input_ui_number + 1}と右キー)</button></div>`;
         }else {
             input_ui_gethtml.innerHTML += `<div class='input_ui_css'><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number},1)'>左に回す<br>(${input_ui_number + 1}と左キー)</button><button onclick='draw(${input_ui_number}, -1)'>右に回す<br>(${input_ui_number + 1}と右キー)</button></div>`;
         }

@@ -48,7 +48,7 @@ header h1 {
 
 /* ヘッダー右側のp要素のホバー時のスタイル設定 */
 #header_right p:hover {
-    background-color: red;
+    background-color: ;
 }
 
 /* ボディのスタイル設定 */
