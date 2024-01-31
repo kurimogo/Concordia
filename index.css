@@ -4,7 +4,7 @@ header {
     border-bottom: 2px solid #757575;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100%;
     height: 70px;
 }
@@ -13,13 +13,14 @@ header {
 header h1 {
     position: absolute;
     top: 0;
-    left: 30px;
-    width: 70%;
+    left: 0px;
     height: 100%;
     margin: 0;
+    padding-left: 2%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    cursor : pointer;
 }
 
 /* ヘッダー右側のスタイル設定 */
@@ -48,7 +49,7 @@ header h1 {
 
 /* ヘッダー右側のp要素のホバー時のスタイル設定 */
 #header_right p:hover {
-    background-color: ;
+    background-color: #8CD790;
 }
 
 /* ボディのスタイル設定 */

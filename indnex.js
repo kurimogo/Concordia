@@ -59,3 +59,7 @@ function Furigana () {
 window.addEventListener('load', function (){
     Furigana();
 });
+
+function home () {
+    location.href = '../home/home.html';
+}
