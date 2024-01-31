@@ -110,6 +110,33 @@ body {
     height: 50px;
 }
 
+#A_list li{
+    list-style: none; 
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 30px;
+}
+
+#answer_menu {
+    text-align: center;
+    padding: 20px;
+}
+
+#answer_menu h1{
+    padding-bottom: 20px;
+}
+
+#answer_menu li:nth-child(odd) {
+    border-top : 2px solid #757575;
+    border-bottom: 2px solid #757575;
+}
+
+#answer_menu button{
+    width: 50%; 
+}
+
+
 /* スマホ用設定 */
 @media screen and (max-width: 768px) {
     #top_right {
@@ -153,6 +180,7 @@ body {
     }
 
     #input_ui_dom {
+        padding-top: 20px;
         display: flex;
         flex-direction: column; /* 縦に並べる */
         margin: auto;
@@ -166,8 +194,8 @@ body {
         margin-bottom: 20px;
     }
     .input_ui_css button{
-        position: relative;
-        bottom: 100px;
+        writing-mode: vertical-rl; /* 縦書きにする */
+        text-orientation: upright; /* 追加 */
         width: 50px;
         height: 100%;
         margin: 0px;
@@ -195,6 +223,10 @@ body {
     }
 
     #right_block h2{
+        font-size: 30px;
+    }
+
+    #A_list li{
         font-size: 30px;
     }
     
