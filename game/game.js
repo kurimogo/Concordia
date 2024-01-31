@@ -23,7 +23,7 @@ let center_dom = document.getElementById('center');
 let input_ui_gethtml;
 const input_ui_list= [];
 
-let time = 3;
+let time = 300;
 
 window.onload = function(){
     countdown();
