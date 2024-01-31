@@ -23,7 +23,7 @@ let center_dom = document.getElementById('center');
 let input_ui_gethtml;
 const input_ui_list= [];
 
-let time = 300;
+let time = 3;
 
 window.onload = function(){
     countdown();
@@ -355,7 +355,7 @@ function invalid() {
 * 2行目...ゲームが終了したことを「現在の数」、「タイム」に書いている。
 */
 function fin () {
-    center_dom.innerHTML = '<div><h1>結果発表ー！！</h1><ul id="A_list"><li>正解した数 ' + quiz_list.pass + '</li><li>不正解の数 ' + quiz_list.fail + '</li><li>飛ばした数 ' + quiz_list.invalid + '</li></ul></div>'
-    time_display_JS.innerHTML = Q_display_JS.innerHTML = '<h2>終了</h2>';
+    center_dom.innerHTML = '<div id="answer_menu"><h1>結果発表ー！！</h1><ul id="A_list"><li>正解した数 ' + quiz_list.pass + '</li><li>不正解の数 ' + quiz_list.fail + '</li><li>飛ばした数 ' + quiz_list.invalid + '</li></ul><button>もう一回遊ぶ</button><button>ホーム画面</button></div>'
+    time_display_JS.innerHTML = Q_display_JS.innerHTML = '<h2>---</h2>';
 }
 
