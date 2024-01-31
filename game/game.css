@@ -86,11 +86,15 @@ body {
     font-size: 200px;
     text-align: center;
 }
+
 #input_ui_dom {
-    width: 100%;
+    padding-top: 20px;
     display: flex;
-    flex-direction: row;
+    margin: auto;
+    justify-content: center; /* 横方向の中央から配置を開始 */
+    align-items: center; /* 縦方向の中央から配置を開始 */
 }
+
 .input_ui_css {
     width: 200px;
     height: 270px;
