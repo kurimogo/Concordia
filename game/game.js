@@ -28,7 +28,31 @@ let time = 1200;
 window.onload = function(){
     countdown();
 }
+// 問題を生成する関数
+function Question() {
+    let old_Q = Q;
+    Q = 0;
 
+    // AnswerPassがtrueの場合に問題を生成
+    if (AnswerPass) {
+        // get_Numberが奇数の場合に問題を生成
+        while (get_Number % 2 == 0 || !Number.isInteger(Q) || old_Q == Q || (Q.toString().includes('-') && minus)) {
+            Q = 0;
+            if (get_Number % 2 == 1) {
+                for (let now_number = 0; now_number < get_Number; now_number++) {
+                    Q += now_number % 2 == 1 ? operator[Math.floor(Math.random() * operator.length)] : Math.floor(Math.random() * 10);
+                }
+            } else {
+                get_Number--;
+            }
+
+            Q = eval(Q);
+        }
+
+        // 問題を表示
+        Q_display_JS.innerHTML = `<h2>${Q}</h2>`;
+    }
+}
 //特定のキーが押されたときの反応
 let keysPressed = {};
 const now_down = {Left:'', right:'', down_1:'',down_2:'',down_3:'',down_4:'',down_5:'',down_6:'',down_7:''}
@@ -130,7 +154,6 @@ function game_time(){
     }
 }
 
-
 // 問題を生成する関数
 function Question() {
     let old_Q = Q;
@@ -139,21 +162,17 @@ function Question() {
     // AnswerPassがtrueの場合に問題を生成
     if (AnswerPass) {
         // get_Numberが奇数の場合に問題を生成
-        if (get_Number % 2 == 1) {
-            for (let now_number = 0; now_number < get_Number; now_number++) {
-                Q += now_number % 2 == 1 ? operator[Math.floor(Math.random() * operator.length)] : Math.floor(Math.random() * 10);
-            }
-        } else {
-            get_Number--;
-            Question();
-        }
-
-        Q = eval(Q);
-
-        // Qが整数でない、または前のQと同じ、またはQがマイナスでminusがtrueの場合、再度問題を生成
-        if (!Number.isInteger(Q) || old_Q == Q || (Q.toString().includes('-') && minus)) {
+        while (get_Number % 2 == 0 || !Number.isInteger(Q) || old_Q == Q || (Q.toString().includes('-') && minus)) {
             Q = 0;
-            Question();
+            if (get_Number % 2 == 1) {
+                for (let now_number = 0; now_number < get_Number; now_number++) {
+                    Q += now_number % 2 == 1 ? operator[Math.floor(Math.random() * operator.length)] : Math.floor(Math.random() * 10);
+                }
+            } else {
+                get_Number--;
+            }
+
+            Q = eval(Q);
         }
 
         // 問題を表示

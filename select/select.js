@@ -1,5 +1,7 @@
 
-
+function goGame(get_Number){
+    window.location.href = "../game/game.html" + "?&Number=" + get_Number;
+}
 
 
 

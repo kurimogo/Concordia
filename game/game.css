@@ -68,6 +68,7 @@
     line-height: 50px;
 }
 
+
 #input_ui_dom {
     width: 100%;
     display: flex;
@@ -101,6 +102,7 @@
         width: 100%;
         display: flex;
         align-items: center;
+        background-color: #EFEFEF;
     }
 
     #right_block:nth-child(even)  {
@@ -112,13 +114,13 @@
         
     }
     
-    
     #top_left {
         position: absolute;
         top: 150px;
         right: 0;
         width: 100%;
         display: flex;
+        background-color: #EFEFEF;
     }
 
     #left_block:nth-child(even) {
@@ -134,12 +136,14 @@
     }
 
     #input_ui_dom {
-        position: relative;
-        top: 290px;
+        position: relative; /* 通常のドキュメントフローに従って配置 */
+        top: 500px; /* 上から290pxの位置に配置 */
         display: flex;
-        flex-direction: column;
-        
+        flex-direction: column; /* 縦に並べる */
+        margin: auto;
+        justify-content: flex-start; /* 上の方から配置を開始 */
     }
+
     .input_ui_css {
         width: 250px;
         height: 150px;
@@ -153,13 +157,15 @@
         margin: 0px;
     }
     #answer_button_ui {
-        position: relative;
-        top: 290px;
+        position: relative; /* 相対位置指定 */
+        bottom: 0px; /* 親要素の一番下に配置 */
+        width: 100%; /* 必要に応じて調整 */
         margin: 0px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
+
     #answer_button_ui button{
         width: 50%;
         height: 50px;
