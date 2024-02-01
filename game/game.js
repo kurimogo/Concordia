@@ -356,6 +356,14 @@ function play(){
     location.reload();
 }
 
+function why_home(){
+    let confirmResult = confirm("ゲームをやめてホーム画面に戻りますか？");
+    if (confirmResult) {
+        // ユーザーがOKをクリックした場合、ホーム画面に戻る
+        home();
+    }
+}
+
 
 
 /* <<終了画面の描画>>
