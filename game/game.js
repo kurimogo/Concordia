@@ -45,7 +45,7 @@ function Question(){
         Question();
     }
     Q = eval(Q);
-    if (!Number.isInteger(Q) || old_Q == Q ||(Q.toString().includes('-')&& minus)) {
+    if (!Number.isInteger(Q) || old_Q == Q ||(Q.toString().includes('-')&& minus) || Q == 0) {
         Q = 0;
         Question();    
     }
