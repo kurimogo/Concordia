@@ -1,6 +1,6 @@
 
-function goGame(get_Number){
-    window.location.href = "../game/game.html" + "?&Number=" + get_Number;
+function goGame(get_Number, time){
+    window.location.href = "../game/game.html" + "?Number=" + get_Number +"&time=" + time;
 }
 
 

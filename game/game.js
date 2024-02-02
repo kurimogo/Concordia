@@ -4,7 +4,7 @@
  let url = new URL(url_string);
  // URLオブジェクトのsearchParamsのget関数でIDがdの値を取得する。
  let get_Number = url.searchParams.get("Number");
- //let operator = url.searchParams.get("operator");
+ let time = url.searchParams.get("time");
 
 let Q;
 let A = [];
@@ -12,7 +12,7 @@ let operator = ['+', '-', '*', '/'];
 const minus = true;
 const quiz_list = {number: 0, pass: 0, fail: 0, invalid:0} 
 let minutes = 0;
-let AnswerPass = false;
+let AnswerPass = true;
 
 Q_display_JS = document.getElementById('Q_display');
 time_display_JS = document.getElementById('time_display');
@@ -23,12 +23,11 @@ let center_dom = document.getElementById('center');
 let input_ui_gethtml;
 const input_ui_list= [];
 
-let time = 300;
-
 window.onload = function(){
     countdown();
 }
 
+//問題
 function Question(){
     let old_Q = Q
     Q = 0;
@@ -46,7 +45,8 @@ function Question(){
         Question();
     }
     Q = eval(Q);
-    if (!Number.isInteger(Q) || old_Q == Q ||(Q.toString().includes('-')&& minus) || Q === 0) {
+    if (!Number.isInteger(Q) || old_Q == Q ||(Q.toString().includes('-')&& minus)) {
+        Q = 0;
         Question();    
     }
     Q_display_JS.innerHTML='<h2>'+ Q +'</h2>';
@@ -155,31 +155,6 @@ function game_time(){
     }
 }
 
-// 問題を生成する関数
-function Question() {
-    let old_Q = Q;
-    Q = 0;
-
-    // AnswerPassがtrueの場合に問題を生成
-    if (AnswerPass) {
-        // get_Numberが奇数の場合に問題を生成
-        while (get_Number % 2 == 0 || !Number.isInteger(Q) || old_Q == Q || (Q.toString().includes('-') && minus)) {
-            Q = 0;
-            if (get_Number % 2 == 1) {
-                for (let now_number = 0; now_number < get_Number; now_number++) {
-                    Q += now_number % 2 == 1 ? operator[Math.floor(Math.random() * operator.length)] : Math.floor(Math.random() * 10);
-                }
-            } else {
-                get_Number--;
-            }
-
-            Q = eval(Q);
-        }
-
-        // 問題を表示
-        Q_display_JS.innerHTML = `<h2>${Q}</h2>`;
-    }
-}
 
 // 最初の描画システム
 function Allinput_ui () {
@@ -193,11 +168,10 @@ function Allinput_ui () {
             input_ui_list.push({id: input_ui_number, type:'symbol', number: 4, start:270, now:0});
         }
         if(size !== 200){
-            input_ui_gethtml.innerHTML += `<div class='input_ui_css'><button onclick='draw(${input_ui_number},1)'>左に回す<br>(${input_ui_number + 1}と左キー)</button><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number}, 1)'>右に回す<br>(${input_ui_number + 1}と右キー)</button></div>`;
+            input_ui_gethtml.innerHTML += `<div class='input_ui_css'><button onclick='draw(${input_ui_number},1)'><ruby>左<rt>ひだり</rt></ruby>に回す<br>(${input_ui_number + 1}と左キー)</button><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number}, -1)'>右に回す<br>(${input_ui_number + 1}と右キー)</button></div>`;
         }else {
             input_ui_gethtml.innerHTML += `<div class='input_ui_css'><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number},1)'>左に回す<br>(${input_ui_number + 1}と左キー)</button><button onclick='draw(${input_ui_number}, -1)'>右に回す<br>(${input_ui_number + 1}と右キー)</button></div>`;
         }
-        
     }
 
     for (let input_ui_number = 0; input_ui_number < get_Number; input_ui_number++){
@@ -213,33 +187,44 @@ let move_time = 2;
 
 // ボタンの部分の関数
 function draw(get_id, turn) {
+    // 現在の合計数を計算します
     let now_total_number = Math.abs(input_ui_list[get_id].now + turn)
-    if(turn == Math.abs(turn)) {
-    if(turn && now_total_number < input_ui_list[get_id].number -1){
-    input_ui_list[get_id].now += turn;
 
-    }else if(turn && now_total_number + turn >= input_ui_list[get_id].number -1){
-        input_ui_list[get_id].now = 0;
-    }
-}else {
-        if(turn && now_total_number < input_ui_list[get_id].number ){
-        input_ui_list[get_id].now += turn % 10;
-    
+    // turnがプラスの場合
+    if(turn == Math.abs(turn)) {
+        // turnがプラスで、現在の合計数が指定された数より小さい場合
+        if(turn && now_total_number < input_ui_list[get_id].number){
+            // 現在の数にturnを加えます
+            input_ui_list[get_id].now += turn;
+        // turnがプラスで、現在の合計数とturnの合計が指定された数以上の場合
         }else if(turn && now_total_number + turn >= input_ui_list[get_id].number -1){
+            // 現在の数を0にリセットします
             input_ui_list[get_id].now = 0;
         }
+    // turnがマイナスの場合
+    }else {
+        // turnがマイナスで、現在の合計数が指定された数より小さい場合
+        if(turn && now_total_number < input_ui_list[get_id].number ){
+            // 現在の数にturnの10での剰余を加えます
+            input_ui_list[get_id].now += turn % 10;
+        // turnがマイナスで、現在の合計数とturnの合計が指定された数以上の場合
+        }else if(turn && now_total_number + turn >= input_ui_list[get_id].number -1){
+            // 現在の数を0にリセットします
+            input_ui_list[get_id].now = 0;
+        }
+    }
 
-}
+    // 現在の数をコンソールに出力します
+    console.log(input_ui_list[get_id].now);
 
+    // 新しいボードを作成します
     new_board(input_ui_list[get_id].id, input_ui_list[get_id].type, (input_ui_list[get_id].number),input_ui_list[get_id].now);
-
 }
 
 function new_board(now_dom_id, type, arc_number, now,){
     Symbol =['+', '-', '÷', '×']
     get_dom_id = document.getElementById('input_' + now_dom_id);
     size = get_dom_id.width;
-    console.log(size)
     dom_id = get_dom_id.getContext("2d");
     dom_id.clearRect(0, 0, size, size);
     if(now == 0) {
