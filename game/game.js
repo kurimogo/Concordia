@@ -12,7 +12,7 @@ let operator = ['+', '-', '*', '/'];
 const minus = true;
 const quiz_list = {number: 0, pass: 0, fail: 0, invalid:0} 
 let minutes = 0;
-let AnswerPass = true;
+let AnswerPass = false;
 
 Q_display_JS = document.getElementById('Q_display');
 time_display_JS = document.getElementById('time_display');
