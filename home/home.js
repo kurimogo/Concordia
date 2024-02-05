@@ -7,3 +7,11 @@ function select () {
 function tutorial () {
     window.location.href='../tutorial/tutorial.html';
 }
+
+document.addEventListener('keydown', event => {
+    // 変数eventの中身はKeyboardEventオブジェクト
+    if (event.code === 'Space') {
+        select();
+    }
+    console.log(event);
+});

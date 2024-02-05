@@ -17,6 +17,7 @@ body {
     height: calc(100% - 200px); /* #topの高さを引いた残りの高さを設定 */
     width: 100%;
     overflow: auto; /* 追加 */
+    
 }
 
 #top_right {
