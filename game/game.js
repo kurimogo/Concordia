@@ -195,7 +195,7 @@ function draw(get_id, turn) {
         // turnがプラスで、現在の合計数が指定された数より小さい場合
         if(turn && now_total_number < input_ui_list[get_id].number){
             // 現在の数にturnを加えます
-            input_ui_list[get_id].now += turn + 0.01;
+            input_ui_list[get_id].now += turn;
         // turnがプラスで、現在の合計数とturnの合計が指定された数以上の場合
         }else if(turn && now_total_number + turn >= input_ui_list[get_id].number -1){
             // 現在の数を0にリセットします
