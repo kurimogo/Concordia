@@ -16,11 +16,52 @@
     </header>
     <main>
         <div id="top">
-            <h1>ゲーム<ruby>設定<rt>せってい</rt></ruby></h1>
-            <button class="button" onclick="goGame(3, 90)"><ruby>初心者<rt>しょしんしゃ</rt></ruby>モード(<ruby>円盤<rt>えんばん</rt></ruby>の<ruby>数<rt>かず</rt></ruby>3<ruby>個<rt>こ</rt>)</button>
-            <button class="button"  onclick="goGame(5, 180)"><ruby>中級者<rt>ちゅうきゅうしゃ</rt></ruby>モード(<ruby>円盤<rt>えんばん</rt></ruby>の<ruby>数<rt>かず</rt></ruby>5<ruby>個<rt>こ</rt>)</button>
-            <button  class="button" onclick="goGame(7, 300)"><ruby>上級者<rt>じょうきゅうしゃ</rt></ruby>モード(<ruby>円盤<rt>えんばん</rt></ruby>の<ruby>数<rt>かず</rt></ruby>7<ruby>個<rt>こ</rt>)</button>
+            <h1>ゲームメニュー</h1>
+                <button class="button" onclick="goGame(3, 90)"><ruby>初心者<rt>しょしんしゃ</rt></ruby>モード(<ruby>円盤<rt>えんばん</rt></ruby>の<ruby>数<rt>かず</rt></ruby>3<ruby>個<rt>こ</rt>)</button>
+                <button class="button"  onclick="goGame(5, 180)"><ruby>中級者<rt>ちゅうきゅうしゃ</rt></ruby>モード(<ruby>円盤<rt>えんばん</rt></ruby>の<ruby>数<rt>かず</rt></ruby>5<ruby>個<rt>こ</rt>)</button>
+                <button  class="button" onclick="goGame(7, 300)"><ruby>上級者<rt>じょうきゅうしゃ</rt></ruby>モード(<ruby>円盤<rt>えんばん</rt></ruby>の<ruby>数<rt>かず</rt></ruby>7<ruby>個<rt>こ</rt>)</button>
+                
         </div>
+   <!-- <div id="center">
+        <div id="left">
+            <canvas></canvas>
+            <div id="left_button">
+            <p>左に回す</p>
+            <p>みぎに回す</p>
+            </div>
+        </div>
+        <div id="right">
+            <div>
+                <div>
+                    <h2 id="title"></h2>
+                    <p id="explanation"></p>
+                </div>
+                <form action="#">
+                    <label for="buttom">
+                        足し算
+                        <input type="checkbox">
+                    </label>
+                    <label for="buttom">
+                        引き算
+                        <input type="checkbox">
+                    </label>
+                    <label for="buttom">
+                        掛け算
+                        <input type="checkbox">
+                    </label>
+                    <label for="buttom">
+                        割り算
+                        <input type="checkbox">
+                    </label>
+                </form>    
+            </div>
+        </div>
+    </div>
+        <div id="bottom">
+            <p onclick="home()">ホーム<ruby>画面<rt>がめん</rt></ruby>に戻る</p>
+            <p onclick="">ゲームを<ruby>始<rt>はじ</rt></ruby>める</p>
+        </div>
+    </div> -->
     </main>
     <footer><!--フッター(一番下側)の部分-->
         <p>Copyright © kurimogo All Rights Reserved.</p>
@@ -29,24 +70,3 @@
 <script src="../indnex.js"></script>
 </html>
 
-<!--
-    残念ながら、このページは近年の値段高騰により開発が中止されました。
-     <div id="center">
-            <div id="right">
-                <h2>モード選択</h2>
-                <canvas id="right_canvas"></canvas>
-                <div id="right_button">
-                    <button onclick="rotate(1)">左回転</button>
-                    <button onclick="rotate(-1)">右回転</button>
-                </div>
-            </div>
-            <div id="left">
-                <h2>テスト</h2>
-            </div>
-        </div>
-        <div id="bottom">
-            <button onclick="home()">ホーム<ruby>画面<rt>がめん</rt></ruby>に戻る</button>
-            <button onclick="goGame()">ゲームスタート</button>
-        </div>
-
--->

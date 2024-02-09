@@ -1,5 +1,5 @@
 // 文字列としてURLを取得する。
- let url_string = window.location.href;
+ let url_string = decodeURIComponent(window.location.href);
  // 文字列としてのURLをURLオブジェクトに変換する。
  let url = new URL(url_string);
  // URLオブジェクトのsearchParamsのget関数でIDがdの値を取得する。
@@ -168,7 +168,7 @@ function Allinput_ui () {
             input_ui_list.push({id: input_ui_number, type:'symbol', number: 4, start:270, now:0});
         }
         if(size !== 200){
-            input_ui_gethtml.innerHTML += `<div class='input_ui_css'><button onclick='draw(${input_ui_number},1)'><ruby>左<rt>ひだり</rt></ruby>に回す<br>(${input_ui_number + 1}+左キー)</button><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number}, -1)'>右に回す<br>(${input_ui_number + 1}+右キー)</button></div>`;
+            input_ui_gethtml.innerHTML += `<div class='input_ui_css'><button onclick='draw(${input_ui_number},1)'><ruby>左<rt>ひだり</rt></ruby>に回す</button><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number}, -1)'>右に回す</button></div>`;
         }else {
             input_ui_gethtml.innerHTML += `<div class='input_ui_css'><canvas id=input_${input_ui_number} width=${size} height=${size}></canvas><button onclick='draw(${input_ui_number},1)'>左に回す<br>(${input_ui_number + 1}+左キー)</button><button onclick='draw(${input_ui_number}, -1)'>右に回す<br>(${input_ui_number + 1}+右キー)</button></div>`;
         }
@@ -195,7 +195,7 @@ function draw(get_id, turn) {
         // turnがプラスで、現在の合計数が指定された数より小さい場合
         if(turn && now_total_number < input_ui_list[get_id].number){
             // 現在の数にturnを加えます
-            input_ui_list[get_id].now += turn;
+            input_ui_list[get_id].now += turn + 0.01;
         // turnがプラスで、現在の合計数とturnの合計が指定された数以上の場合
         }else if(turn && now_total_number + turn >= input_ui_list[get_id].number -1){
             // 現在の数を0にリセットします
@@ -215,18 +215,19 @@ function draw(get_id, turn) {
     }
 
     // 現在の数をコンソールに出力します
-    console.log(input_ui_list[get_id].now);
+    //console.log(input_ui_list[get_id].now);
 
     // 新しいボードを作成します
     new_board(input_ui_list[get_id].id, input_ui_list[get_id].type, (input_ui_list[get_id].number),input_ui_list[get_id].now);
 }
 
+//円盤の部分
 function new_board(now_dom_id, type, arc_number, now,){
     Symbol =['+', '-', '÷', '×']
-    get_dom_id = document.getElementById('input_' + now_dom_id);
-    size = get_dom_id.width;
-    dom_id = get_dom_id.getContext("2d");
-    dom_id.clearRect(0, 0, size, size);
+    get_dom_id = document.getElementById('input_' + now_dom_id);//埋め込むcanvasのidを取得
+    dom_id = get_dom_id.getContext("2d");//2D描画のための処理
+    size = get_dom_id.width;//サイズを取得
+    dom_id.clearRect(0, 0, size, size);//一回消す
     if(now == 0) {
         now_display = (now);
     }else if(String(now).slice(0,1) !== '-'){
@@ -237,12 +238,15 @@ function new_board(now_dom_id, type, arc_number, now,){
 for (let now_dom_number = 0;  now_dom_number < arc_number; now_dom_number++){
     //下準備
     arc_angle = 360/arc_number;
-    arc_angle_half = arc_angle/2 + 90;
+    arc_angle_half = (Math.PI/180)*(arc_angle/2 + 90);
     
-
     //大きな円を書く
     dom_id.beginPath();
-    dom_id.arc(size/2,size/2, size/2.1, ((Math.PI/180)*arc_angle)*(now_dom_number + now) + ((Math.PI/180)*arc_angle_half),  ((Math.PI/180)*arc_angle)*((now_dom_number  + now)+ 1) + ((Math.PI/180)*arc_angle_half), false);//扇形の描画
+    
+    /*
+
+    */
+    dom_id.arc(size/2,size/2, size/2.1, ((Math.PI/180)*arc_angle)*(now_dom_number + now) + arc_angle_half,  ((Math.PI/180)*arc_angle)*((now_dom_number  + now)+ 1) + arc_angle_half, false);//扇形の描画
     dom_id.lineWidth = 3; // 線の太さ
     dom_id.strokeStyle = '#757575'
     dom_id.lineTo(size/2,size/2);//線で囲む
@@ -250,7 +254,6 @@ for (let now_dom_number = 0;  now_dom_number < arc_number; now_dom_number++){
     if(now_dom_number == 0){
 
     }
-    
     //中の文字を書く予定
     dom_id.save(); //座標系セーブ
     dom_id.translate((size/2), size/2);
@@ -300,9 +303,6 @@ for (let now_dom_number = 0;  now_dom_number < arc_number; now_dom_number++){
 }
 
 
-
-
-
 // 回答を処理する関数
 function answer() {
     if (time > 0) {
@@ -329,11 +329,13 @@ function answer() {
     }
 }
 
-// 無効な回答を処理する関数
+// 問題を飛ばすボタンの関数
 function invalid() {
+    if(AnswerPass == true){
     quiz_list.invalid++;
     invalid_display_JS.innerHTML = `<p id="fail_display">${quiz_list.invalid}</p>`;
     Question();
+    }
 }
 
 //もう一回遊ぶ
@@ -341,6 +343,7 @@ function play(){
     location.reload();
 }
 
+//ホーム画面に戻る
 function why_home(){
     let confirmResult = confirm("ゲームをやめてホーム画面に戻りますか？");
     if (confirmResult) {
@@ -349,8 +352,6 @@ function why_home(){
     }
 }
 
-
-
 /* <<終了画面の描画>>
 * 1行目...真ん中にこのゲームでの成果を書いてる
 * 2行目...ゲームが終了したことを「現在の数」、「タイム」に書いている。
@@ -358,5 +359,4 @@ function why_home(){
 function fin () {
     center_dom.innerHTML = '<div id="answer_menu"><h1>結果発表ー！！</h1><ul id="A_list"><li>正解した数 ' + quiz_list.pass + '</li><li>不正解の数 ' + quiz_list.fail + '</li><li>飛ばした数 ' + quiz_list.invalid + '</li></ul><button onclick="play()">もう一回遊ぶ</button><button onclick="home()">ホーム画面</button></div>'
     time_display_JS.innerHTML = Q_display_JS.innerHTML = '<h2>---</h2>';
-}
-
+};

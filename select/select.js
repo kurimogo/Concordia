@@ -1,11 +1,39 @@
 
 function goGame(get_Number, time){
-    window.location.href = "../game/game.html" + "?Number=" + get_Number +"&time=" + time;
+   const game_url = "../game/game.html?Number=" +  encodeURIComponent(get_Number +"&time="+ time)
+   console.log(game_url); 
+   window.location.href = game_url;
+}
+
+/*<<設定の関数>>
+------------------------
+* 1行目...初心者モードの設定
+* 2行目...中級者モードの設定
+* 3行目...上級者モードの設定
+* 4行目...カスタム設定
+------------------------
+*/
+left_explanation = [
+    {type: 'easy_menu', title: '<ruby>初心者<rt>しょしんしゃ</rt></ruby>モード', explanation: '初めての方はこちら！下のメニューではどんな問題を出すか設定できるよ！'}, 
+    {type: 'normal_menu', title: '<ruby>中級者<rt>ちゅうきゅうしゃ</rt></ruby>モード', explanation: '中級者の方はこちら！下の設定では初心者モードで設定できる事以外に<br>マイナスを出す設定も追加されたよ！'},
+    {type: 'normal_menu', title: '<ruby>上級者<rt>じょうきゅうしゃ</rt></ruby>モード', explanation: '上級者の方はこちら！下の設定の説明は問題ないよね？<br>そんな上級者の方に豆知識!円盤の数がたくさんあると<br>乱数調整でどんどん難しくなるよ！'},
+    {type: '_menu', title: 'カスタム設定', explanation: 'カスタム設定だよ！自分好みに設定して練習したい方はこちら！'}
+]
+
+now_number = 3;//選択中の番号
+window.onload = function(){
+    Left_menu(now_number)
+}
+function Left_menu(get_now_number) {
+    console.log(get_now_number);
+    get_titel_dom = document.getElementById('title');
+    get_explanation_dom = document.getElementById('explanation');
+    get_titel_dom.innerHTML = left_explanation[get_now_number].title;
+    get_explanation_dom.innerHTML = left_explanation[get_now_number].explanation;
 }
 
 
-
-//大会前夜まで頑張ったが間に合わずお蔵入りの子たち(オンライン機能搭載時に復活する予定)
+//大会前夜まで頑張ったが間に合わずお蔵入りの子たち(半分復活)
 /*<<設定の関数>>
 ------------------------
 * 1行目...初心者モードの設定
